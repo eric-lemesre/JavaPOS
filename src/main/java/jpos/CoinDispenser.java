@@ -10,7 +10,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// CoinDispenser.java - A JavaPOS 1.8.2 device control
+// CoinDispenser.java - A JavaPOS 1.10.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -23,7 +23,7 @@ import jpos.loader.*;
 
 public class CoinDispenser
   extends BaseJposControl
-  implements CoinDispenserControl18, JposConst
+  implements CoinDispenserControl110, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -36,6 +36,8 @@ public class CoinDispenser
   protected CoinDispenserService16 service16;
   protected CoinDispenserService17 service17;
   protected CoinDispenserService18 service18;
+  protected CoinDispenserService19 service19;
+  protected CoinDispenserService110 service110;
   protected Vector directIOListeners;
   protected Vector statusUpdateListeners;
 
@@ -48,7 +50,7 @@ public class CoinDispenser
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS CoinDispenser Device Control";
-    deviceControlVersion = deviceVersion18;
+    deviceControlVersion = deviceVersion110;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -59,6 +61,8 @@ public class CoinDispenser
     //service16 = null;
     //service17 = null;
     //service18 = null;
+    //service19 = null;
+    //service110 = null;
     directIOListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
@@ -227,6 +231,70 @@ public class CoinDispenser
     try
     {
       return service18.getCapUpdateStatistics();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapCompareFirmwareVersion()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getCapCompareFirmwareVersion();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapUpdateFirmware()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getCapUpdateFirmware();
     }
     catch(JposException je)
     {
@@ -491,6 +559,70 @@ public class CoinDispenser
     }
   }
 
+  public void compareFirmwareVersion(String firmwareFileName, int[] result)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service19.compareFirmwareVersion(firmwareFileName, result);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void updateFirmware(String firmwareFileName)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service19.updateFirmware(firmwareFileName);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Framework Methods
@@ -517,6 +649,8 @@ public class CoinDispenser
       service16 = null;
       service17 = null;
       service18 = null;
+      service19 = null;
+      service110 = null;
     }
     else
     {
@@ -616,6 +750,34 @@ public class CoinDispenser
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement CoinDispenserService18 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion19)
+      {
+        try
+        {
+          service19 = (CoinDispenserService19)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement CoinDispenserService19 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion110)
+      {
+        try
+        {
+          service110 = (CoinDispenserService110)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement CoinDispenserService110 interface",
                                   e);
         }
       }

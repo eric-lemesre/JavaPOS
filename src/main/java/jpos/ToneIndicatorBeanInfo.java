@@ -44,6 +44,8 @@ public class ToneIndicatorBeanInfo
         makeProperty("CapPowerReporting"),
         makeProperty("CapStatisticsReporting"),
         makeProperty("CapUpdateStatistics"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapUpdateFirmware"),
 
         // Properties
         makeProperty("AsyncMode"),

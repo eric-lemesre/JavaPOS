@@ -56,6 +56,12 @@ public class CATBeanInfo
         makeProperty("CapTrainingMode"),
         makeProperty("CapStatisticsReporting"),
         makeProperty("CapUpdateStatistics"),
+        makeProperty("CapCashDeposit"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapLockTerminal"),
+        makeProperty("CapLogStatus"),
+        makeProperty("CapUnlockTerminal"),
+        makeProperty("CapUpdateFirmware"),
 
         // Properties
         makeProperty("AccountNumber"),
@@ -75,7 +81,9 @@ public class CATBeanInfo
         makeProperty("TransactionNumber"),
         makeProperty("TransactionType"),
         makeProperty("PaymentMedia"),
-
+        makeProperty("Balance"),
+        makeProperty("LogStatus"),
+        makeProperty("SettledAmount")
       };
 
       return properties;

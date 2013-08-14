@@ -47,6 +47,9 @@ public class ScaleBeanInfo
         makeProperty("CapZeroScale"),
         makeProperty("CapStatisticsReporting"),
         makeProperty("CapUpdateStatistics"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapStatusUpdate"),
+        makeProperty("CapUpdateFirmware"),
 
         // Properties
         makeProperty("MaximumWeight"),
@@ -60,7 +63,10 @@ public class ScaleBeanInfo
         makeProperty("TareWeight"),
         makeProperty("UnitPrice"),
         makeProperty("PowerNotify"),
-        makeProperty("PowerState")
+        makeProperty("PowerState"),
+        makeProperty("ScaleLiveWeight"),
+        makeProperty("StatusNotify"),
+
       };
 
       return properties;

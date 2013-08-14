@@ -43,6 +43,8 @@ public class POSKeyboardBeanInfo
         makeProperty("CapPowerReporting"),
         makeProperty("CapStatisticsReporting"),
         makeProperty("CapUpdateStatistics"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapUpdateFirmware"),
 
         // Properties
         makeProperty("AutoDisable"),

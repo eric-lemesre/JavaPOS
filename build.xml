@@ -2,7 +2,7 @@
 
 <!-- XML Ant (http://jakarta.apache.org/ant/index.html) build file for JavaPOS -->
 <!-- @author Brian Spohn -->
-<!-- @version 1.8.2 -->
+<!-- @version 1.10 -->
 
 <project name="JavaPOS" default="dist">
 
@@ -10,21 +10,20 @@
   
   <!-- Directory properties -->
   <property name="jpos.root" value="."/>
-  <property name="jpos.src" value="${jpos.root}/src/main/java"/>
-  <property name="jpos.resources" value="${jpos.root}/src/main/resources"/>
-  <property name="jpos.build" value="${jpos.root}/target/classes"/>
-  <property name="jpos.dist" value="${jpos.root}/target/dist"/>
+  <property name="jpos.src" value="${jpos.root}/src"/>
+  <property name="jpos.build" value="${jpos.root}/classes"/>
+  <property name="jpos.dist" value="${jpos.root}/dist"/>
   <property name="jpos.extra" value="${jpos.root}/extra"/>
   
   <!-- Distribution file names -->
-  <property name="jpos.jar.file" value="${jpos.dist}/jpos-1.8.2.jar"/>
-  <property name="jpos.controls.jar.file" value="${jpos.dist}/jpos-controls.1.8.2.jar"/>
-  <property name="jpos.dist.zip.file" value="${jpos.dist}/JavaPOS-1.8.2-Dist.zip"/>
-  <property name="jpos.src.zip.file.base" value="${jpos.dist}/JavaPOS-1.8.2-Source"/>
+  <property name="jpos.jar.file" value="${jpos.dist}/jpos110.jar"/>
+  <property name="jpos.controls.jar.file" value="${jpos.dist}/jpos110-controls.jar"/>
+  <property name="jpos.dist.zip.file" value="${jpos.dist}/JavaPOS-1.10-Dist.zip"/>
+  <property name="jpos.src.zip.file.base" value="${jpos.dist}/JavaPOS-1.10-Source"/>
   
   <!-- Tool: JposControlGen -->
   <property name="jpos.tools.ctrlgen" value="JposControlGen"/>
-  <property name="jpos.tools.ctrlgen.version" value="1008002"/>
+  <property name="jpos.tools.ctrlgen.version" value="1010000"/>
   <property name="jpos.tools.ctrlgen.output" value="${jpos.src}/jpos"/>
   
   
@@ -49,6 +48,12 @@
   <!-- Generate JavaPOS Controls -->
   <target name="genctrls">
     <echo message="Creating JavaPOS Controls from JavaPOS Interfaces"/>
+    <java fork="yes" classname="${jpos.tools.ctrlgen}">
+      <arg value="Biometrics"/>
+      <arg value="${jpos.tools.ctrlgen.version}"/>
+      <arg value="${jpos.src}/jpos"/>
+      <arg value="${jpos.tools.ctrlgen.output}"/>
+    </java>
     <java fork="yes" classname="${jpos.tools.ctrlgen}">
       <arg value="BumpBar"/>
       <arg value="${jpos.tools.ctrlgen.version}"/>
@@ -81,6 +86,12 @@
     </java>
     <java fork="yes" classname="${jpos.tools.ctrlgen}">
       <arg value="CAT"/>
+      <arg value="${jpos.tools.ctrlgen.version}"/>
+      <arg value="${jpos.src}/jpos"/>
+      <arg value="${jpos.tools.ctrlgen.output}"/>
+    </java>
+    <java fork="yes" classname="${jpos.tools.ctrlgen}">
+      <arg value="ElectronicJournal"/>
       <arg value="${jpos.tools.ctrlgen.version}"/>
       <arg value="${jpos.src}/jpos"/>
       <arg value="${jpos.tools.ctrlgen.output}"/>
@@ -211,7 +222,7 @@
     
     <!-- Copy manifest stubs from source to destination directories -->
     <copy todir="${jpos.build}/jpos/res">
-      <fileset dir="${jpos.resources}/jpos/res" includes="*.*"/>
+      <fileset dir="${jpos.src}/jpos/res" includes="*.*"/>
     </copy>
     
   </target>

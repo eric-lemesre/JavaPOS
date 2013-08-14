@@ -53,6 +53,10 @@ public class CheckScannerBeanInfo
         makeProperty("CapValidationDevice"),
         makeProperty("CapStatisticsReporting"),
         makeProperty("CapUpdateStatistics"),
+        makeProperty("CapAutoContrast"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapContrast"),
+        makeProperty("CapUpdateFirmware"),
 
         // Properties
         makeProperty("AutoDisable"),
@@ -75,7 +79,9 @@ public class CheckScannerBeanInfo
         makeProperty("PowerState"),
         makeProperty("Quality"),
         makeProperty("QualityList"),
-        makeProperty("RemainingImagesEstimate")
+        makeProperty("RemainingImagesEstimate"),
+        makeProperty("Contrast"),
+
       };
 
       return properties;

@@ -46,6 +46,9 @@ public class MSRBeanInfo
         makeProperty("CapTransmitSentinels"),
         makeProperty("CapStatisticsReporting"),
         makeProperty("CapUpdateStatistics"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapUpdateFirmware"),
+        makeProperty("CapWritableTracks"),
 
         // Properties
         makeProperty("AccountNumber"),
@@ -72,6 +75,8 @@ public class MSRBeanInfo
         makeProperty("PowerState"),
         makeProperty("Track4Data"),
         makeProperty("TransmitSentinels"),
+        makeProperty("EncodingMaxLength"),
+        makeProperty("TracksToWrite"),
 
       };
 

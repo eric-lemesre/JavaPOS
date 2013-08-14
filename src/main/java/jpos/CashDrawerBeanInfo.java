@@ -44,6 +44,8 @@ public class CashDrawerBeanInfo
         makeProperty("CapStatusMultiDrawerDetect"),
         makeProperty("CapStatisticsReporting"),
         makeProperty("CapUpdateStatistics"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapUpdateFirmware"),
 
         // Properties
         makeProperty("DrawerOpened"),

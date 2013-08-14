@@ -42,6 +42,8 @@ public class MotionSensorBeanInfo
         makeProperty("CapPowerReporting"),
         makeProperty("CapStatisticsReporting"),
         makeProperty("CapUpdateStatistics"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapUpdateFirmware"),
 
         // Properties
         makeProperty("Motion"),
