@@ -21,7 +21,6 @@ package jpos.config.simple.xml;
 import java.util.*;
 import java.net.URL;
 
-import jpos.config.*;
 import jpos.config.simple.AbstractRegPopulator;
 
 /**

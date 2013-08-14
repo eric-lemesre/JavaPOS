@@ -23,7 +23,6 @@ import java.util.*;
 import java.net.URL;
 import java.text.DateFormat;
 
-import java.io.FileInputStream;
 import java.io.PrintWriter;
 
 import org.apache.xerces.dom.DOMImplementationImpl;
@@ -231,8 +230,8 @@ public abstract class AbstractXercesRegPopulator
      */
     protected void insertDTDInfo( Document doc, OutputFormat outFormat ) throws Exception
     {
-        String publicId = outFormat.whichDoctypePublic( doc );
-        String systemId = outFormat.whichDoctypeSystem( doc );
+        String publicId = OutputFormat.whichDoctypePublic( doc );
+        String systemId = OutputFormat.whichDoctypeSystem( doc );
 
         outFormat.setDoctype( "JposEntries", getDoctypeValue() );
     }
@@ -541,8 +540,6 @@ public abstract class AbstractXercesRegPopulator
     // Public constants
     //
 
-    public static final String DTD_FILE_PATH = "jpos" + 
-    											 File.separator + "res";
-    public static final String DTD_FILE_NAME = DTD_FILE_PATH + 
-    											 File.separator + "jcl.dtd";
+    public static final String DTD_FILE_PATH = "jpos" + File.separator + "res";
+    public static final String DTD_FILE_NAME = DTD_FILE_PATH + File.separator + "jcl.dtd";
 }

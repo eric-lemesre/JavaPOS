@@ -134,8 +134,6 @@ public class Xerces2RegPopulator extends AbstractXercesRegPopulator
     	
     	try
     	{
-    		tracer.println( "load: xmlFileName=" + xmlFileName );
-    		
 	    	reader = new FileReader( new File( xmlFileName ) );
 			InputSource inputSource = new InputSource( reader );
 			
@@ -348,7 +346,7 @@ public class Xerces2RegPopulator extends AbstractXercesRegPopulator
 			String factoryClass = attributes.getValue( "factoryClass" );
 			String serviceClass = attributes.getValue( "serviceClass" );
 
-			//<todo>Check values</todo>
+			//TODO: Check values
 			
 			currentEntry.addProperty( JposEntry.SI_FACTORY_CLASS_PROP_NAME, 
 									  factoryClass );
@@ -363,7 +361,7 @@ public class Xerces2RegPopulator extends AbstractXercesRegPopulator
 			String factoryClass = attributes.getValue( "name" );
 			String serviceClass = attributes.getValue( "url" );
 
-			//<todo>Check values</todo>
+			//TODO: Check values
 			
 			currentEntry.addProperty( JposEntry.VENDOR_NAME_PROP_NAME, 
 									  factoryClass );
@@ -379,7 +377,7 @@ public class Xerces2RegPopulator extends AbstractXercesRegPopulator
 			String category = attributes.getValue( "category" );
 			String version = attributes.getValue( "version" );
 			
-			//<todo>Check values</todo>
+			//TODO: Check values
 			
 			currentEntry.addProperty( JposEntry.DEVICE_CATEGORY_PROP_NAME,
 									  category );
@@ -396,7 +394,7 @@ public class Xerces2RegPopulator extends AbstractXercesRegPopulator
 			String name = attributes.getValue( "name" );
 			String url = attributes.getValue( "url" );
 			
-			//<todo>Check values</todo>
+			//TODO: Check values
 			
 			currentEntry.addProperty( JposEntry.PRODUCT_DESCRIPTION_PROP_NAME,
 									  description );
@@ -427,7 +425,7 @@ public class Xerces2RegPopulator extends AbstractXercesRegPopulator
 				
 				Object value = JposEntryUtility.parsePropValue( valueString, typeClass );
 				
-				//<todo>Check values</todo>
+				//TODO: Check values
 			
 				JposEntry.Prop prop = currentEntry.
 									  createProp( name, value, typeClass );										      
@@ -458,7 +456,7 @@ public class Xerces2RegPopulator extends AbstractXercesRegPopulator
 	{
 		/**
 		 * @return the XML schema as an InputSource if it is found in a JAR
-		 * file in the CLASSPATH---ClassLoader.getSystem...---otherwise
+		 * file in the CLASSPATH otherwise
 		 * return null
 		 */
 		public InputSource resolveEntity( String publicId, String systemId )
@@ -472,7 +470,7 @@ public class Xerces2RegPopulator extends AbstractXercesRegPopulator
    			if( publicId.equals( getDoctypeValue() ) )
    			{
 				InputStream is = 
-				ClassLoader.getSystemResourceAsStream( getDoctypeValue() );
+				getClass().getResourceAsStream( getDoctypeValue() );
 			
 				if( is != null ) 
 					return new InputSource( new InputStreamReader( is ) );

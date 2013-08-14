@@ -22,8 +22,6 @@ import java.util.Iterator;
 import java.util.Enumeration;
 import java.util.List;
 
-import jpos.JposException;
-
 /**
  * Sample interface that contains constants for all the JposProperties (names, default
  * values, etc...) and some methods that the implementing property class must define.

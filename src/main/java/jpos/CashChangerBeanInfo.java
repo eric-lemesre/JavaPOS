@@ -49,6 +49,8 @@ public class CashChangerBeanInfo
         makeProperty("CapDepositDataEvent"),
         makeProperty("CapPauseDeposit"),
         makeProperty("CapRepayDeposit"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("AsyncMode"),

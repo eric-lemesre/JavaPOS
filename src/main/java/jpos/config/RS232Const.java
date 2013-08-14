@@ -18,8 +18,6 @@ package jpos.config;
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-import java.io.Serializable;
-
 /**
  * Defines constants for RS232 buses
  * @since 1.3 (Washington DC 2001 meeting)

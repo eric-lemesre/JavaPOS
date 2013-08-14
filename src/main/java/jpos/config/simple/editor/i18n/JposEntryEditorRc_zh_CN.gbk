@@ -1,0 +1,212 @@
+
+# --------------------------------------------------
+# Messages UI
+
+JPOSENTRYEDITOR_STRING_KEY = JposEntryEditor
+FILE_STRING_KEY = 文件
+NEW_STRING_KEY = 新文件
+OPEN_STRING_KEY = 打开文件
+SAVE_STRING_KEY = 存文件
+SAVEAS_STRING_KEY = 另存为...
+LOADJPOSREGISTRY_STRING_KEY = 载入 Jpos 注册表
+SAVEJPOSREGISTRY_STRING_KEY = 存档 Jpos 注册表
+CLOSEJPOSREGISTRY_STRING_KEY = 关闭 Jpos 注册表
+CLOSE_STRING_KEY = 关闭
+EXIT_STRING_KEY = 退出
+EDIT_STRING_KEY = 编辑
+ADD_STRING_KEY = 增加...
+COPY_STRING_KEY = 复制...
+DELETE_STRING_KEY = 删除...
+MODIFY_STRING_KEY = 修改
+PREFERENCES_STRING_KEY = 选项...
+HELP_STRING_KEY = 帮助
+ABOUT_STRING_KEY = 关于...
+JPOSENTRIES_STRING_KEY = Jpos 条目
+PROPERTIES_STRING_KEY = 属性
+IMPORTANTPROPERTIES_STRING_KEY = 重要属性
+CURRENTPROPERTY_STRING_KEY = 现在属性
+PROPERTYNAME_STRING_KEY = 属性名
+PROPERTYVALUE_STRING_KEY = 属性值
+PROPERTYTYPE_STRING_KEY = 属性类型
+OTHERPROPERTIES_STRING_KEY = 其它属性
+MESSAGES_STRING_KEY = 信息
+TOPOFFILE_STRING_KEY = 文件头 
+
+# --------------------------------------------------
+# Messages Main Frame
+
+NEWFILEMENU_STRING_KEY = 创建新JPOS注册表文件
+NEWFILEBUTTON_STRING_KEY = 创建新JPOS注册表文件
+OPENFILEMENU_STRING_KEY = 打开现有JPOS注册表文件
+OPENFILEBUTTON_STRING_KEY = 打开现有JPOS注册表文件
+SAVEFILEMENU_STRING_KEY = 存档打开的JPOS注册表文件
+SAVEFILEBUTTON_STRING_KEY = 存档打开的JPOS注册表文件
+SAVEASFILEMENU_STRING_KEY = 提示用户存档打开的JPOS注册表文件
+SAVEASFILEBUTTON_STRING_KEY = 提示用户存档打开的JPOS注册表文件
+LOADJPOSREGISTRYMENU_STRING_KEY = 从当前的JPOS注册表载入条目
+SAVEJPOSREGISTRYMENU_STRING_KEY = 将当前条目存入当前注册表
+CLOSEJPOSREGISTRYMENU_STRING_KEY = 关闭当前打开的JPOS注册表文件
+CLOSEFILEMENU_STRING_KEY = 关闭当前打开的JPOS注册表文件
+CLOSEFILEBUTTON_STRING_KEY = 关闭当前打开的JPOS注册表文件
+EXITMENU_STRING_KEY = 退出编辑器
+ADDMENU_STRING_KEY = 增加新条目
+COPYMENU_STRING_KEY = 拷贝一个JPOS条目
+ADDBUTTON_STRING_KEY = 增加新条目
+DELETEMENU_STRING_KEY = 删除当前选定条目
+DELETEBUTTON_STRING_KEY = 删除当前选定条目
+MODIFYMENU_STRING_KEY = 修改当前选定条目
+MODIFYBUTTON_STRING_KEY = 修改当前选定条目
+ABOUTMENU_STRING_KEY = 显示JPOSEntryEditor有关信息
+ABOUTBUTTON_STRING_KEY = 显示JPOSEntryEditor有关信息
+CONFIGMENU_STRING_KEY = 修改JposEntryEditor用户选项
+CONFIGBUTTON_STRING_KEY = 修改JposEntryEditor用户选项
+
+# --------------------------------------------------
+#
+
+SELECTENTRYTODELETE_STRING_KEY = 请选择要删除的条目.
+DELETEENTRYWITHLOGNAM_STRING_KEY = 删除该逻辑名的条目: 
+SELECTENTRYTOMODIFY_STRING_KEY = 选择要修改的条目.
+SAVECURRENTCHANGES_STRING_KEY = 退出之前保存当前修改内容吗? 
+ENTERNEWLOGICALNAME_STRING_KEY = 请给这个JPOS条目起一个新的逻辑名.
+
+# --------------------------------------------------
+# Open Messages
+
+OPENFILE_STRING_KEY = 打开的文件: {0} 有 {1} 条目.
+NOENTRIES_STRING_KEY = 文件中没有任何条目
+ERROR_STRING_KEY = 错误 文件中未系列化的条目:
+
+# --------------------------------------------------
+# Close Messages
+
+CLOSECHANGES_STRING_KEY = 要存改变的内容吗?
+CLOSEDFILE_STRING_KEY = 放弃改变的内容关闭文件.
+CLOSEDFILEWITHCHANGES_STRING_KEY = 关闭的文件: {0} 有 {1} 条目
+
+# --------------------------------------------------
+# Save Messages
+
+ERRORSAVING_STRING_KEY = 错误 系列化文件中条目: 
+SAVEDFILE_STRING_KEY = 存储文件: {0} 有 {1} 条目
+
+# --------------------------------------------------
+# Save As Messages
+
+SAVECHANGES_STRING_KEY = 你要存储条目吗?
+CHANGESLOST_STRING_KEY = 当前修改的内容会丢失!\n继续吗?
+
+# --------------------------------------------------
+# LoadJposRegistry Messages
+
+LOADENTRIESJPOSREGISTRY_STRING_KEY = 载入的当前 JPOS 注册表 有 {0} 条目
+NOENTRIESJPOSREGISTRY_STRING_KEY = 当前 JPOS 注册表不含任何条目
+
+# --------------------------------------------------
+# SaveJposRegistry Messages
+
+ERRORSAVINGJPOSREGISTRY_STRING_KEY = 存JPOS注册表条目是发生错误
+SAVEDCHANGESTOREGISTRY_STRING_KEY = 已存 {0} 条目到当前JPOS注册表
+
+# --------------------------------------------------
+# CloseJposRegistry Messages
+
+SAVECHANGESJPOSREGISTRY_STRING_KEY = 要存当前修改进JPOS注册表吗?
+CLOSEDJPOSREGISTRY_STRING_KEY = 关闭当前JPOS注册表.
+
+# --------------------------------------------------
+# isCurrentLnFMetal Message
+
+METAL_STRING_KEY = 金属
+
+# --------------------------------------------------
+# AboutDialog Class
+
+ABOUTTITLE_STRING_KEY = 关于
+ABOUTTITLELABEL_STRING_KEY = About JposEntryEditor v
+OKBUTTON_STRING_KEY = 确定
+JAVAVERSION_STRING_KEY = Java 版本:
+LABEL_STRING_KEY = 卷标
+DIALOG_STRING_KEY = 对话
+OS_STRING_KEY = 操作系统:
+ARCHITECTURE_STRING_KEY = 架构:
+TOTALMEMORY_STRING_KEY = 总内存:
+FREEMEMORY_STRING_KEY = 剩余内存:
+BYTES_STRING_KEY = 字节
+
+# --------------------------------------------------
+# EditJposEntryDialog class
+
+EDITTITLE_STRING_KEY = 编辑一个JPOS条目
+ADDPROP_STRING_KEY = 增加一个属性
+MODIFYPROP_STRING_KEY = 修改一个属性
+DELETEPROP_STRING_KEY = 删除一个属性
+DELETEJPOSENTRY_STRING_KEY = 删除这个逻辑名的JPOS条目: 
+VALIDNAME_STRING_KEY = 需要一个有效的逻辑名.
+VALIDCLASS_STRING_KEY = 需要有效的serviceInstanceFactoryClass.
+UNKNOWN_STRING_KEY = 未知
+USEDNAME_STRING_KEY = 该逻辑名已被占用. 请再输入一个.
+CANCELBUTTON_STRING_KEY = 取消
+
+# --------------------------------------------------
+# EditJposEntryPropDialog class
+
+EDITPROPTITLE_STRING_KEY = 编辑属性
+EDITPROPERTYNAME_STRING_KEY = 属性名:
+EDITPROPERTYVALUE_STRING_KEY = 属性值:
+EDITPROPERTYTYPE_STRING_KEY = 属性类型:
+EDITINVALIDPROPERTY_STRING_KEY = 无效属性:
+PROPERTYDEFINED_STRING_KEY = 属性已被定义
+EDITVALIDNAME_STRING_KEY = 需有效属性名和属性值
+NOTCOMPATIBLE_STRING_KEY = 属性值与属性类型不兼容!
+
+# --------------------------------------------------
+# JposEntryEditorConfig class
+
+ERRORSAVINGFILE_STRING_KEY = 存文件错误
+
+
+#------------------------------------------------------------------------
+#JposEntryEditorConfigDialog class
+
+JPOSENTRYPREFERENCES_STRING_KEY = JposEntryEditor 用户选项
+TREEVIEW_STRING_KEY = 树状视图
+LOOKANDFEEL_STRING_KEY = 观感
+AUTOEXPAND_STRING_KEY = 自动展开树
+SORTED_STRING_KEY = 分类
+CATEGORY_STRING_KEY = 按类别
+MANUFACTURER_STRING_KEY = 按生产商
+JAVALOOKANDFEEL_STRING_KEY = Java 观感
+NATIVELOOKANDFEEL_STRING_KEY = 观感
+VIEWOPTIONS_STRING_KEY = 视图选项
+SHOWINTEGERSASHEX_STRING_KEY = 显示十六进制整数
+AUTOLOADREGISTRY_STRING_KEY = 自动载入JPOS 注册表
+
+
+# --------------------------------------------------
+# JposEntryTreePanel class
+
+ENTRIES_STRING_KEY = 条目
+
+# --------------------------------------------------
+# JposEntryViewPanel
+
+LOGICALNAMETEXT_STRING_KEY = JposEntry 逻辑名属性
+SIFACTORYCLASSTEXT_STRING_KEY = JposEntry serviceInstanceFactoryClass 属性
+CURRENTPROPNAMETEXT_STRING_KEY = 当前选定的属性名
+CURRENTPROPVALUETEXT_STRING_KEY = 当前选定的属性值
+
+# ----------------------------------------------------
+# JposEntryProp
+
+SETNAMEEXCEPTION_STRING_KEY = 无效参数
+
+# ----------------------------------------------------
+# StandardPropsViewPanel
+
+CREATION_PROPS_STRING_KEY = 创建属性
+JPOS_PROPS_STRING_KEY = JavaPOS 属性
+VENDOR_PROPS_STRING_KEY = 生产商属性
+PRODUCT_PROPS_STRING_KEY = 产品属性
+PROPERTY_NAME_STRING_KEY = 属性名
+PROPERTY_VALUE_STRING_KEY = 属性值

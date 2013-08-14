@@ -85,7 +85,7 @@ public interface JposEntryConst extends RS232Const, Serializable
 
 	/** @return an array of all compatible JavaPOS version values */
 	public static final String[] JPOS_VERSION_PROPS = 
-								   { "1.2", "1.3", "1.4", "1.5", "1.6", "1.7" };
+								   { "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8" };
 
     //-------------------------------------------------------------------------
     // Standard properties name and values

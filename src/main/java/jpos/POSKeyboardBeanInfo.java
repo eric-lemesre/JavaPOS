@@ -41,6 +41,8 @@ public class POSKeyboardBeanInfo
         // Capabilities
         makeProperty("CapKeyUp"),
         makeProperty("CapPowerReporting"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("AutoDisable"),

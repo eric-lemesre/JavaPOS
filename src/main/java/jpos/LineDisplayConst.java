@@ -19,7 +19,10 @@
 // 98-02-18 JavaPOS Release 1.2                                   BS
 // 16-Apr-2003 Release 1.7.2: Added the missing constant          BS
 //               DISP_CCT_NONE.
-//
+// 03-Jun-2003 JavaPOS Release 1.8                                BS
+//    Added constants DISP_CCT_BLINK and DISP_CT_BLINK
+// 15-Sep-2004 JavaPOS Release 1.8.2                              BS
+//    Added missing constants EDISP_TOOBIG and EDISP_BADFORMAT.
 /////////////////////////////////////////////////////////////////////
 
 package jpos;
@@ -63,6 +66,9 @@ public interface LineDisplayConst
     public static final int DISP_CCT_REVERSE     =   0x00000010;
     public static final int DISP_CCT_OTHER       =   0x00000020;
 
+    // Added in Release 1.8
+    public static final int DISP_CCT_BLINK       =   0x00000040;
+
 
     /////////////////////////////////////////////////////////////////////
     // "CapReadBack" Property Constants
@@ -101,6 +107,9 @@ public interface LineDisplayConst
     public static final int DISP_CT_UNDERLINE   =   4;
     public static final int DISP_CT_REVERSE     =   5;
     public static final int DISP_CT_OTHER       =   6;
+
+    // Added in Release 1.8
+    public static final int DISP_CT_BLINK       =   0x10000000;
 
 
     /////////////////////////////////////////////////////////////////////
@@ -185,4 +194,12 @@ public interface LineDisplayConst
     public static final int DISP_BM_TOP           = -1;
     //public static final int DISP_BM_CENTER      = -2;
     public static final int DISP_BM_BOTTOM        = -3;
+
+
+    /////////////////////////////////////////////////////////////////////
+    // "ErrorCodeExtended" Property Constants for Line Display
+    /////////////////////////////////////////////////////////////////////
+
+    public static final int JPOS_EDISP_TOOBIG    = 1 + JposConst.JPOSERREXT; // DisplayBitmap
+    public static final int JPOS_EDISP_BADFORMAT = 2 + JposConst.JPOSERREXT; // DisplayBitmap
 }

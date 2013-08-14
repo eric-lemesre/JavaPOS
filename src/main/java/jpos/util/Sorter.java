@@ -20,8 +20,6 @@ package jpos.util;
 
 import java.util.*;
 
-import javax.swing.*;
-
 /**
  * This is utility class to sort Comparable elements in Vector objects
  * @author E. Michael Maximilien (maxim@us.ibm.com)

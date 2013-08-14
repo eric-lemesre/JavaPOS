@@ -18,10 +18,6 @@ package jpos.util;
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-import java.util.*;
-
-import jpos.JposException;
-
 import jpos.loader.*;
 
 /**

@@ -46,5 +46,5 @@ public final class Version extends Object
     // Class variables
     //
 
-    private static final String JCL_VERSION_STRING = "2.1.0-RC3";
+    private static final String JCL_VERSION_STRING = "2.2.0";
 }

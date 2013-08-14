@@ -20,7 +20,6 @@ package jpos.loader.simple;
 
 import java.util.*;
 import java.lang.reflect.*;
-import java.io.IOException;
 
 import jpos.JposConst;
 import jpos.JposException;

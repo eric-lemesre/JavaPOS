@@ -57,6 +57,8 @@ public class PointCardRWBeanInfo
         makeProperty("CapTracksToRead"),
         makeProperty("CapTracksToWrite"),
         makeProperty("CapMapCharacterSet"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("CardState"),

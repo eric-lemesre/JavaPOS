@@ -20,23 +20,11 @@ package jpos.config.simple.xml;
 
 import java.io.*;
 import java.util.*;
-import java.net.URL;
-import java.text.DateFormat;
 
 import java.io.FileInputStream;
-import java.io.PrintWriter;
 
 import org.w3c.dom.*;
                   
-import org.apache.xerces.parsers.DOMParser;
-
-import org.apache.xerces.dom.DocumentImpl;
-import org.apache.xerces.dom.DocumentTypeImpl;
-import org.apache.xerces.dom.DOMImplementationImpl;
-
-import org.apache.xml.serialize.XMLSerializer;
-import org.apache.xml.serialize.OutputFormat;
-
 import org.xml.sax.InputSource;
 
 import jpos.config.*;
@@ -110,7 +98,7 @@ public class XercesRegPopulator extends AbstractXercesRegPopulator
         {
             getJposEntries().clear();
 
-            checkAndCreateTempDTD();
+            domParser.setEntityResolver(new XercesRegPopulator.JPOSDTDEntityResolver());
 
             domParser.parse( new InputSource( getPopulatorFileIS() ) );
 
@@ -137,7 +125,7 @@ public class XercesRegPopulator extends AbstractXercesRegPopulator
 			                e.getMessage() ); 
 		}
         finally
-        { removeTempDTD(); }
+        { }
     }
 
     /**
@@ -158,6 +146,11 @@ public class XercesRegPopulator extends AbstractXercesRegPopulator
 				is = new FileInputStream( xmlFile );
 			else
 				is = findFileInClasspath( xmlFileName );
+			
+			if (is == null)
+			{
+				is = getClass().getClassLoader().getResourceAsStream(xmlFileName);
+			}
 
 			if( is == null )
 			{
@@ -184,7 +177,7 @@ public class XercesRegPopulator extends AbstractXercesRegPopulator
         {
 			getJposEntries().clear();
 
-            checkAndCreateTempDTD();
+            domParser.setEntityResolver(new XercesRegPopulator.JPOSDTDEntityResolver());
 
             domParser.parse( new InputSource( is ) );
             
@@ -212,7 +205,7 @@ public class XercesRegPopulator extends AbstractXercesRegPopulator
 			                e.getMessage() ); 
 		}
 		finally
-        { removeTempDTD(); }
+        { }
     }
 
 	/**
@@ -224,134 +217,6 @@ public class XercesRegPopulator extends AbstractXercesRegPopulator
     //--------------------------------------------------------------------------
     // Protected methods
     //
-
-    /**
-     * Checks if JCL DTD is available "jpos/res/jcl.dtd" if not then creates it
-     * extracting it from the JAR file
-     * @since 1.2 (SF 2K meeting)
-     */
-    protected void checkAndCreateTempDTD()
-    {
-        createdTempDTD = false;
-        createdTempDir = false;
-        InputStream is = null;
-
-        try
-        {
-            File dtdPath = new File( DTD_FILE_PATH );
-            File dtdFile = new File( DTD_FILE_NAME );
-
-            if( dtdFile.exists() )
-				return;            
-            
-            if( !dtdPath.exists() )
-            {
-                dtdPath.mkdirs();
-                createdTempDir = true;
-				tracer.println( "DTD file PATH does not exist...  " );
-				tracer.println( "Created \"jpos/res\" as: " + 
-				                dtdPath.getCanonicalPath() );
-            }
-            
-            //Extract from JAR file and create...
-            is = ClassLoader.getSystemResourceAsStream( DTD_JAR_FILE_NAME );
-
-			if( is == null )
-				is = ClassLoader.getSystemClassLoader().
-				                 getResourceAsStream( DTD_FILE_NAME );
-
-			tracer.println( "Got DTD InputStream from current ClassLoader" );
-
-            if( is != null )
-				readAndCreateTempDtdFile( is );
-        }
-        catch( IOException ioe )
-        { tracer.println( "Error creating DTD file or path.  Exception.msg = " + 
-        	              ioe.getMessage() ); }
-        finally
-        {
-            try{ if( is != null ) is.close(); }
-            catch( IOException ioe ) 
-            { 
-            	tracer.println( "Error while closing InputStream..." +
-            				    "Exception.msg=" + ioe.getMessage() ); 
-            }
-        }
-    }
-
-	/**
-	 * Reads the DTD file from the InputStream provided and creates a temp
-	 * @since 1.2 (SF 2K meeting)
-	 * @exception java.io.IOException if anything goes wrong
-	 */
-	protected void readAndCreateTempDtdFile( InputStream is ) 
-	throws IOException
-	{
-		File dtdFile = new File( DTD_FILE_NAME );
-		FileOutputStream fos = new FileOutputStream( dtdFile );
-		OutputStreamWriter osw = new OutputStreamWriter( fos );
-		BufferedInputStream bis = new BufferedInputStream( is );
-
-		StringBuffer sb = new StringBuffer();
-
-		while( bis.available() > 0 )
-		{
-			byte[] buffer = new byte[ bis.available() ];
-
-			bis.read( buffer );
-
-			sb.append( new String( buffer ) );
-		}
-
-		osw.write( sb.toString().trim() );
-
-		createdTempDTD = true;
-
-		try
-		{ 
-			if( osw != null ) osw.close(); 
-			if( fos != null ) fos.close(); 
-		}
-		catch( IOException ioe ) 
-		{
-           	tracer.println( "Error while closing InputStream..." +
-            				    "Exception.msg=" + ioe.getMessage() ); 			
-		}
-
-		tracer.println( "Read and created temp DTD file: jpos/res/jcl.dtd" );
-	}
-
-    /**
-     * Removes JCL DTD "jpos/res/jcl.dtd" if it was created 
-     * @since 1.2 (SF 2K meeting)
-     */
-    protected void removeTempDTD()
-    {
-        try
-        {
-            if( createdTempDTD )
-            {
-                File dtdFile = new File( DTD_FILE_NAME );
-                dtdFile.delete();
-            }
-            
-            if( createdTempDir )
-            {
-				tracer.println( "Deleting the DTD temp jpos/res/ directories..." );
-
-                File dtdJposResFilePath = new File( DTD_JPOS_RES_FILE_PATH );
-                dtdJposResFilePath.delete();
-
-                File dtdJposFilePath = new File( DTD_JPOS_FILE_PATH );
-                dtdJposFilePath.delete();
-            }
-        }
-        catch( Exception e )
-        { 
-        	tracer.println( "Error removing temporary DTD file." + 
-        	                "  Exception.msg= " + e.getMessage() ); 
-       	}
-    }
 
     /**
      * @return an enumeration of JposEntry objects read from the XML document object
@@ -555,13 +420,36 @@ public class XercesRegPopulator extends AbstractXercesRegPopulator
         jposEntry.add( jposEntry.createProp( propName, propValue, propType ) );
     }
     
+    /**
+     * JposDTDEntityResolver to resolve DTD
+     */
+    public class JPOSDTDEntityResolver implements org.xml.sax.EntityResolver
+    {
+        /**
+		 * @return the DTD as an InputSource if it is found in a JAR
+		 * file in the CLASSPATH otherwise return null
+		 */
+        public org.xml.sax.InputSource resolveEntity(String publicId, String systemId) throws org.xml.sax.SAXException, java.io.IOException
+        {
+            if (publicId.equals("-//JavaPOS//DTD//EN"))
+            {
+				InputStream is = getClass().getResourceAsStream( DTD_JAR_FILE_NAME );
+                    
+				if (is != null)
+				{
+					return (new org.xml.sax.InputSource(new InputStreamReader(is)));
+				}
+			}
+            
+            return null;
+        }
+        
+    }
+    
     //--------------------------------------------------------------------------
     // Instance variables
     //
 
-    private boolean createdTempDTD = false;
-    private boolean createdTempDir = false;
-    
     private Tracer tracer = TracerFactory.getInstance().
                              createTracer( "XercesRegPopulator" );
 
@@ -569,12 +457,7 @@ public class XercesRegPopulator extends AbstractXercesRegPopulator
     // Public constants
     //
 
-	public static final String DTD_JPOS_FILE_PATH = "jpos";
-	public static final String DTD_JPOS_RES_FILE_PATH = "jpos" + 
-	                                                      File.separator + 
-	                                                      "res";
-
-    public static final String DTD_JAR_FILE_NAME = "jpos/res/jcl.dtd";
+    public static final String DTD_JAR_FILE_NAME = "/jpos/res/jcl.dtd";
 
 	public static final String XERCES_REG_POPULATOR_NAME_STRING = 
 	                             "JCL XML Entries Populator";

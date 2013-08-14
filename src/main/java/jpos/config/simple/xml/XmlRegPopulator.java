@@ -18,9 +18,6 @@ package jpos.config.simple.xml;
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-import java.util.Enumeration;
-import java.net.URL;
-
 import jpos.config.JposRegPopulator;
 
 /**

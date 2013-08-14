@@ -40,6 +40,8 @@ public class KeylockBeanInfo
       {
         // Capabilities
         makeProperty("CapPowerReporting"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("KeyPosition"),

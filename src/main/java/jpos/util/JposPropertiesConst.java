@@ -19,11 +19,6 @@ package jpos.util;
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-import java.util.Iterator;
-import java.util.Enumeration;
-
-import jpos.JposException;
-
 /**
  * Interface with all JposPropertiesConstants like property names and values
  * @since 1.3 (Washington DC 2001 meeting)

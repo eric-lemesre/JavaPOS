@@ -10,7 +10,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// ToneIndicator.java - A JavaPOS 1.7.2 device control
+// ToneIndicator.java - A JavaPOS 1.8.2 device control
 //
 //------------------------------------------------------------------------------
 
@@ -23,7 +23,7 @@ import jpos.loader.*;
 
 public class ToneIndicator
   extends BaseJposControl
-  implements ToneIndicatorControl17, JposConst
+  implements ToneIndicatorControl18, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -35,6 +35,7 @@ public class ToneIndicator
   protected ToneIndicatorService15 service15;
   protected ToneIndicatorService16 service16;
   protected ToneIndicatorService17 service17;
+  protected ToneIndicatorService18 service18;
   protected Vector directIOListeners;
   protected Vector errorListeners;
   protected Vector outputCompleteListeners;
@@ -49,7 +50,7 @@ public class ToneIndicator
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS ToneIndicator Device Control";
-    deviceControlVersion = deviceVersion17;
+    deviceControlVersion = deviceVersion18;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -59,6 +60,7 @@ public class ToneIndicator
     //service15 = null;
     //service16 = null;
     //service17 = null;
+    //service18 = null;
     directIOListeners = new Vector();
     errorListeners = new Vector();
     outputCompleteListeners = new Vector();
@@ -140,6 +142,70 @@ public class ToneIndicator
     try
     {
       return service13.getCapPowerReporting();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapStatisticsReporting()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service18.getCapStatisticsReporting();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapUpdateStatistics()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service18.getCapUpdateStatistics();
     }
     catch(JposException je)
     {
@@ -758,6 +824,102 @@ public class ToneIndicator
     }
   }
 
+  public void resetStatistics(String statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service18.resetStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void retrieveStatistics(String[] statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service18.retrieveStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void updateStatistics(String statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service18.updateStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Framework Methods
@@ -783,6 +945,7 @@ public class ToneIndicator
       service15 = null;
       service16 = null;
       service17 = null;
+      service18 = null;
     }
     else
     {
@@ -868,6 +1031,20 @@ public class ToneIndicator
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement ToneIndicatorService17 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion18)
+      {
+        try
+        {
+          service18 = (ToneIndicatorService18)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement ToneIndicatorService18 interface",
                                   e);
         }
       }

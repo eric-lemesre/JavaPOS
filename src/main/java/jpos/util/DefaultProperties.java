@@ -21,8 +21,6 @@ package jpos.util;
 import java.io.*;
 import java.util.*;
 
-import jpos.JposException;
-
 /**
  * Default implementation of the JposProperties interface
  * Loads/looks for the Jpos properties from the System properties and
@@ -379,7 +377,7 @@ public class DefaultProperties extends Object implements JposProperties
         Properties properties = new Properties();
         loadedPropFileName = propFileName;
 
-		InputStream is = ClassLoader.getSystemResourceAsStream( loadedPropFileName );
+		InputStream is = getClass().getClassLoader().getResourceAsStream( loadedPropFileName );
 
         if( is != null ) 
         {

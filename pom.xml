@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>jpos</groupId>
   <artifactId>jpos</artifactId>
-  <version>1.7</version>
+  <version>1.8.2</version>
   <name>JavaPOS</name>
   <description>The JavaPOS (Java for Point Of Sale) standard committee was formed by a
 collection of retail vendors and end users to examine the ways in which these

@@ -10,7 +10,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// MotionSensor.java - A JavaPOS 1.7.2 device control
+// MotionSensor.java - A JavaPOS 1.8.2 device control
 //
 //------------------------------------------------------------------------------
 
@@ -23,13 +23,14 @@ import jpos.loader.*;
 
 public class MotionSensor
   extends BaseJposControl
-  implements MotionSensorControl17, JposConst
+  implements MotionSensorControl18, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
   //--------------------------------------------------------------------------
 
   protected MotionSensorService17 service17;
+  protected MotionSensorService18 service18;
   protected Vector directIOListeners;
   protected Vector statusUpdateListeners;
 
@@ -42,11 +43,12 @@ public class MotionSensor
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS MotionSensor Device Control";
-    deviceControlVersion = deviceVersion17;
+    deviceControlVersion = deviceVersion18;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
     //service17 = null;
+    //service18 = null;
     directIOListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
@@ -69,6 +71,70 @@ public class MotionSensor
     try
     {
       return service17.getCapPowerReporting();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapStatisticsReporting()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service18.getCapStatisticsReporting();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapUpdateStatistics()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service18.getCapUpdateStatistics();
     }
     catch(JposException je)
     {
@@ -266,6 +332,102 @@ public class MotionSensor
     }
   }
 
+  public void resetStatistics(String statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service18.resetStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void retrieveStatistics(String[] statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service18.retrieveStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void updateStatistics(String statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service18.updateStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Framework Methods
@@ -286,6 +448,7 @@ public class MotionSensor
     {
 
       service17 = null;
+      service18 = null;
     }
     else
     {
@@ -301,6 +464,20 @@ public class MotionSensor
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement MotionSensorService17 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion18)
+      {
+        try
+        {
+          service18 = (MotionSensorService18)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement MotionSensorService18 interface",
                                   e);
         }
       }

@@ -55,6 +55,8 @@ public class LineDisplayBeanInfo
         makeProperty("CapBitmap"),
         makeProperty("CapMapCharacterSet"),
         makeProperty("CapScreenMode"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("CharacterSet"),

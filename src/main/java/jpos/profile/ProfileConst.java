@@ -18,8 +18,6 @@ package jpos.profile;
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-import java.net.URL;
-
 /**
  * Defines constants used for the jpos.profile package
  * @since 1.3 (SF 2K meeting)

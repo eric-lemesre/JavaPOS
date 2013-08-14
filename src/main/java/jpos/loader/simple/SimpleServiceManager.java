@@ -18,10 +18,6 @@ package jpos.loader.simple;
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-import java.io.*;
-import java.util.*;
-import java.lang.reflect.*;
-
 import jpos.JposConst;
 import jpos.JposException;
 
@@ -180,8 +176,8 @@ implements JposServiceManager
                                   getJposEntry( logicalName );
 
             if( jposEntry == null )
-                throw new JposException( JposConst.JPOS_E_NOSERVICE, 
-                                          "Could not find service" );
+                throw new JposException( JposConst.JPOS_E_NOEXIST, 
+                                          "Service does not exist in loaded JCL registry" );
 
             String siFactoryClassName = 
             (String)jposEntry.getPropertyValue( JposEntry.
