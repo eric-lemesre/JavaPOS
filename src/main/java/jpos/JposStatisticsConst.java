@@ -16,8 +16,12 @@
 //
 // Modification history
 // ------------------------------------------------------------------
-// 15-Sep-2004 JavaPOS Release 1.8.2                               BS
+// 2004-Jul-14 JavaPOS Release 1.8.1                               BS
 //   New file to define constants for Device Statistic names.
+// 2007-Jan-04 JavaPOS Release 1.11                                BS
+//   Added constants for new device classes.
+// 2008-Jan-14 JavaPOS Release 1.12                                BS
+//   Added constants for statistics new to Release 1.12.
 //
 /////////////////////////////////////////////////////////////////////
 
@@ -27,9 +31,20 @@ public interface JposStatisticsConst
 {
   public static final String JPOS_STAT_HoursPoweredCount = "HoursPoweredCount";
   public static final String JPOS_STAT_CommunicationErrorCount = "CommunicationErrorCount";
+  public static final String JPOS_STAT_SuccessfulMatchCount = "SuccessfulMatchCount";
+  public static final String JPOS_STAT_UnsuccessfulMatchCount = "UnsuccessfulMatchCount";
+  public static final String JPOS_STAT_AverageFAR = "AverageFAR";
+  public static final String JPOS_STAT_AverageFRR = "AverageFRR";
   public static final String JPOS_STAT_BumpCount = "BumpCount";
   public static final String JPOS_STAT_DrawerGoodOpenCount = "DrawerGoodOpenCount";
   public static final String JPOS_STAT_DrawerFailedOpenCount = "DrawerFailedOpenCount";
+  public static final String JPOS_STAT_ChecksScannedCount = "ChecksScannedCount";
+  public static final String JPOS_STAT_WriteCount = "WriteCount";
+  public static final String JPOS_STAT_FailedWriteCount = "FailedWriteCount";
+  public static final String JPOS_STAT_EraseCount = "EraseCount";
+  public static final String JPOS_STAT_MediumRemovedCount = "MediumRemovedCount";
+  public static final String JPOS_STAT_MediumSize = "MediumSize";
+  public static final String JPOS_STAT_MediumFreeSpace = "MediumFreeSpace";
   public static final String JPOS_STAT_BarcodePrintedCount = "BarcodePrintedCount";
   public static final String JPOS_STAT_FormInsertionCount = "FormInsertionCount";
   public static final String JPOS_STAT_HomeErrorCount = "HomeErrorCount";
@@ -51,16 +66,39 @@ public interface JposStatisticsConst
   public static final String JPOS_STAT_SlipLineFeedCount = "SlipLineFeedCount";
   public static final String JPOS_STAT_SlipLinePrintedCount = "SlipLinePrintedCount";
   public static final String JPOS_STAT_StampFiredCount = "StampFiredCount";
+  public static final String JPOS_STAT_GoodReadCount = "GoodReadCount";
+  public static final String JPOS_STAT_NoReadCount = "NoReadCount";
+  public static final String JPOS_STAT_SessionCount = "SessionCount";
   public static final String JPOS_STAT_LockPositionChangeCount = "LockPositionChangeCount";
   public static final String JPOS_STAT_OnlineTransitionCount = "OnlineTransitionCount";
   public static final String JPOS_STAT_FailedDataParseCount = "FailedDataParseCount";
   public static final String JPOS_STAT_UnreadableCardCount = "UnreadableCardCount";
-  public static final String JPOS_STAT_GoodReadCount = "GoodReadCount";
+  public static final String JPOS_STAT_GoodWriteCount = "GoodWriteCount";
+  public static final String JPOS_STAT_MissingStartSentinelTrack1Count = "MissingStartSentinelTrack1Count";
+  public static final String JPOS_STAT_ParityLRCErrorTrack1Count = "ParityLRCErrorTrack1Count";
+  public static final String JPOS_STAT_MissingStartSentinelTrack2Count = "MissingStartSentinelTrack2Count";
+  public static final String JPOS_STAT_ParityLRCErrorTrack2Count = "ParityLRCErrorTrack2Count";
+  public static final String JPOS_STAT_MissingStartSentinelTrack3Count = "MissingStartSentinelTrack3Count";
+  public static final String JPOS_STAT_ParityLRCErrorTrack3Count = "ParityLRCErrorTrack3Count";
+  public static final String JPOS_STAT_MissingStartSentinelTrack4Count = "MissingStartSentinelTrack4Count";
+  public static final String JPOS_STAT_ParityLRCErrorTrack4Count = "ParityLRCErrorTrack4Count";
+  public static final String JPOS_STAT_GoodCardAuthenticationDataCount = "GoodCardAuthenticationDataCount";
+  public static final String JPOS_STAT_FailedCardAuthenticationDataCount = "FailedCardAuthenticationDataCount";
+  public static final String JPOS_STAT_ChallengeRequestCount = "ChallengeRequestCount";
+  public static final String JPOS_STAT_GoodDeviceAuthenticationCount = "GoodDeviceAuthenticationCount";
+  public static final String JPOS_STAT_FailedDeviceAuthenticationCount = "FailedDeviceAuthenticationCount";
   public static final String JPOS_STAT_FailedReadCount = "FailedReadCount";
   public static final String JPOS_STAT_MotionEventCount = "MotionEventCount";
   public static final String JPOS_STAT_ValidPINEntryCount = "ValidPINEntryCount";
   public static final String JPOS_STAT_InvalidPINEntryCount = "InvalidPINEntryCount";
   public static final String JPOS_STAT_KeyPressedCount = "KeyPressedCount";
+  public static final String JPOS_STAT_TagReadCount = "TagReadCount";
+  public static final String JPOS_STAT_GoodTagWriteCount = "GoodTagWriteCount";
+  public static final String JPOS_STAT_FailedTagWriteCount = "FailedTagWriteCount";
+  public static final String JPOS_STAT_GoodTagLockCount = "GoodTagLockCount";
+  public static final String JPOS_STAT_FailedTagLockCount = "FailedTagLockCount";
+  public static final String JPOS_STAT_GoodTagDisableCount = "GoodTagDisableCount";
+  public static final String JPOS_STAT_FailedTagDisableCount = "FailedTagDisableCount";
   public static final String JPOS_STAT_GoodWeightReadCount = "GoodWeightReadCount";
   public static final String JPOS_STAT_GoodScanCount = "GoodScanCount";
   public static final String JPOS_STAT_GoodSignatureReadCount = "GoodSignatureReadCount";

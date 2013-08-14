@@ -10,7 +10,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// SignatureCapture.java - A JavaPOS 1.10.0 device control
+// SignatureCapture.java - A JavaPOS 1.12.2 device control
 //
 //------------------------------------------------------------------------------
 
@@ -23,7 +23,7 @@ import jpos.loader.*;
 
 public class SignatureCapture
   extends BaseJposControl
-  implements SignatureCaptureControl110, JposConst
+  implements SignatureCaptureControl112, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -38,6 +38,8 @@ public class SignatureCapture
   protected SignatureCaptureService18 service18;
   protected SignatureCaptureService19 service19;
   protected SignatureCaptureService110 service110;
+  protected SignatureCaptureService111 service111;
+  protected SignatureCaptureService112 service112;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -52,7 +54,7 @@ public class SignatureCapture
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS SignatureCapture Device Control";
-    deviceControlVersion = deviceVersion110;
+    deviceControlVersion = deviceVersion112;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -65,6 +67,8 @@ public class SignatureCapture
     //service18 = null;
     //service19 = null;
     //service110 = null;
+    //service111 = null;
+    //service112 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -987,6 +991,8 @@ public class SignatureCapture
       service18 = null;
       service19 = null;
       service110 = null;
+      service111 = null;
+      service112 = null;
     }
     else
     {
@@ -1114,6 +1120,34 @@ public class SignatureCapture
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement SignatureCaptureService110 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion111)
+      {
+        try
+        {
+          service111 = (SignatureCaptureService111)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement SignatureCaptureService111 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion112)
+      {
+        try
+        {
+          service112 = (SignatureCaptureService112)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement SignatureCaptureService112 interface",
                                   e);
         }
       }

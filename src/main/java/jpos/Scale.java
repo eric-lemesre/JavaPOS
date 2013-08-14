@@ -10,7 +10,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// Scale.java - A JavaPOS 1.10.0 device control
+// Scale.java - A JavaPOS 1.12.2 device control
 //
 //------------------------------------------------------------------------------
 
@@ -23,7 +23,7 @@ import jpos.loader.*;
 
 public class Scale
   extends BaseJposControl
-  implements ScaleControl110, JposConst
+  implements ScaleControl112, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -38,6 +38,8 @@ public class Scale
   protected ScaleService18 service18;
   protected ScaleService19 service19;
   protected ScaleService110 service110;
+  protected ScaleService111 service111;
+  protected ScaleService112 service112;
   protected Vector directIOListeners;
   protected Vector dataListeners;
   protected Vector errorListeners;
@@ -52,7 +54,7 @@ public class Scale
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS Scale Device Control";
-    deviceControlVersion = deviceVersion110;
+    deviceControlVersion = deviceVersion112;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -65,6 +67,8 @@ public class Scale
     //service18 = null;
     //service19 = null;
     //service110 = null;
+    //service111 = null;
+    //service112 = null;
     directIOListeners = new Vector();
     dataListeners = new Vector();
     errorListeners = new Vector();
@@ -1398,6 +1402,8 @@ public class Scale
       service18 = null;
       service19 = null;
       service110 = null;
+      service111 = null;
+      service112 = null;
     }
     else
     {
@@ -1525,6 +1531,34 @@ public class Scale
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement ScaleService110 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion111)
+      {
+        try
+        {
+          service111 = (ScaleService111)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement ScaleService111 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion112)
+      {
+        try
+        {
+          service112 = (ScaleService112)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement ScaleService112 interface",
                                   e);
         }
       }

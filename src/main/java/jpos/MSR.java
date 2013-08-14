@@ -10,7 +10,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// MSR.java - A JavaPOS 1.10.0 device control
+// MSR.java - A JavaPOS 1.12.2 device control
 //
 //------------------------------------------------------------------------------
 
@@ -23,7 +23,7 @@ import jpos.loader.*;
 
 public class MSR
   extends BaseJposControl
-  implements MSRControl110, JposConst
+  implements MSRControl112, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -38,6 +38,8 @@ public class MSR
   protected MSRService18 service18;
   protected MSRService19 service19;
   protected MSRService110 service110;
+  protected MSRService111 service111;
+  protected MSRService112 service112;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -52,7 +54,7 @@ public class MSR
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS MSR Device Control";
-    deviceControlVersion = deviceVersion110;
+    deviceControlVersion = deviceVersion112;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -65,6 +67,8 @@ public class MSR
     //service18 = null;
     //service19 = null;
     //service110 = null;
+    //service111 = null;
+    //service112 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -363,6 +367,134 @@ public class MSR
     try
     {
       return service110.getCapWritableTracks();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public String getCapCardAuthentication()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapCardAuthentication();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getCapDataEncryption()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapDataEncryption();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getCapDeviceAuthentication()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapDeviceAuthentication();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapTrackDataMasking()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapTrackDataMasking();
     }
     catch(JposException je)
     {
@@ -1318,6 +1450,646 @@ public class MSR
     }
   }
 
+  public byte[] getAdditionalSecurityInformation()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getAdditionalSecurityInformation();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public byte[] getCardAuthenticationData()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCardAuthenticationData();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getCardAuthenticationDataLength()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCardAuthenticationDataLength();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public String getCardPropertyList()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCardPropertyList();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public String getCardType()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCardType();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public String getCardTypeList()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCardTypeList();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getDataEncryptionAlgorithm()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getDataEncryptionAlgorithm();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setDataEncryptionAlgorithm(int encryptAlgorithm)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.setDataEncryptionAlgorithm(encryptAlgorithm);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getDeviceAuthenticated()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getDeviceAuthenticated();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getDeviceAuthenticationProtocol()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getDeviceAuthenticationProtocol();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public byte[] getTrack1EncryptedData()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getTrack1EncryptedData();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getTrack1EncryptedDataLength()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getTrack1EncryptedDataLength();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public byte[] getTrack2EncryptedData()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getTrack2EncryptedData();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getTrack2EncryptedDataLength()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getTrack2EncryptedDataLength();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public byte[] getTrack3EncryptedData()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getTrack3EncryptedData();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getTrack3EncryptedDataLength()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getTrack3EncryptedDataLength();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public byte[] getTrack4EncryptedData()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getTrack4EncryptedData();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getTrack4EncryptedDataLength()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getTrack4EncryptedDataLength();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public String getWriteCardType()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getWriteCardType();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setWriteCardType(String cardType)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.setWriteCardType(cardType);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Methods
@@ -1540,7 +2312,7 @@ public class MSR
     }
   }
 
-  public void writeTracks(String data, int timeout)
+  public void writeTracks(byte[][] data, int timeout)
     throws JposException
   {
     // Make sure control is opened
@@ -1560,6 +2332,166 @@ public class MSR
     try
     {
       service110.writeTracks(data, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void authenticateDevice(byte[] response)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.authenticateDevice(response);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void deauthenticateDevice(byte[] response)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.deauthenticateDevice(response);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void retrieveCardProperty(String name, String[] value)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.retrieveCardProperty(name, value);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void retrieveDeviceAuthenticationData(byte[] challenge)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.retrieveDeviceAuthenticationData(challenge);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void updateKey(String key, String keyName)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.updateKey(key, keyName);
     }
     catch(JposException je)
     {
@@ -1600,6 +2532,8 @@ public class MSR
       service18 = null;
       service19 = null;
       service110 = null;
+      service111 = null;
+      service112 = null;
     }
     else
     {
@@ -1727,6 +2661,34 @@ public class MSR
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement MSRService110 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion111)
+      {
+        try
+        {
+          service111 = (MSRService111)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement MSRService111 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion112)
+      {
+        try
+        {
+          service112 = (MSRService112)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement MSRService112 interface",
                                   e);
         }
       }

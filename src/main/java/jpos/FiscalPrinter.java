@@ -10,7 +10,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// FiscalPrinter.java - A JavaPOS 1.10.0 device control
+// FiscalPrinter.java - A JavaPOS 1.12.2 device control
 //
 //------------------------------------------------------------------------------
 
@@ -23,7 +23,7 @@ import jpos.loader.*;
 
 public class FiscalPrinter
   extends BaseJposControl
-  implements FiscalPrinterControl110, JposConst
+  implements FiscalPrinterControl112, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -37,6 +37,8 @@ public class FiscalPrinter
   protected FiscalPrinterService18 service18;
   protected FiscalPrinterService19 service19;
   protected FiscalPrinterService110 service110;
+  protected FiscalPrinterService111 service111;
+  protected FiscalPrinterService112 service112;
   protected Vector directIOListeners;
   protected Vector errorListeners;
   protected Vector outputCompleteListeners;
@@ -51,7 +53,7 @@ public class FiscalPrinter
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS FiscalPrinter Device Control";
-    deviceControlVersion = deviceVersion110;
+    deviceControlVersion = deviceVersion112;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -63,6 +65,8 @@ public class FiscalPrinter
     //service18 = null;
     //service19 = null;
     //service110 = null;
+    //service111 = null;
+    //service112 = null;
     directIOListeners = new Vector();
     errorListeners = new Vector();
     outputCompleteListeners = new Vector();
@@ -1674,6 +1678,38 @@ public class FiscalPrinter
     try
     {
       return service19.getCapUpdateFirmware();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapPositiveSubtotalAdjustment()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.11.0
+    if(serviceVersion < deviceVersion111)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.11.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service111.getCapPositiveSubtotalAdjustment();
     }
     catch(JposException je)
     {
@@ -5187,6 +5223,134 @@ public class FiscalPrinter
     }
   }
 
+  public void printRecItemVoid(String description, long price, int quantity, int vatInfo, long unitPrice, String unitName)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.11.0
+    if(serviceVersion < deviceVersion111)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.11.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service111.printRecItemVoid(description, price, quantity, vatInfo, unitPrice, unitName);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void printRecItemAdjustmentVoid(int adjustmentType, String description, long amount, int vatInfo)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.11.0
+    if(serviceVersion < deviceVersion111)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.11.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service111.printRecItemAdjustmentVoid(adjustmentType, description, amount, vatInfo);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void printRecItemRefund(String description, long amount, int quantity, int vatInfo, long unitAmount, String unitName)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.printRecItemRefund(description, amount, quantity, vatInfo, unitAmount, unitName);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void printRecItemRefundVoid(String description, long amount, int quantity, int vatInfo, long unitAmount, String unitName)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.12.0
+    if(serviceVersion < deviceVersion112)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.12.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.printRecItemRefundVoid(description, amount, quantity, vatInfo, unitAmount, unitName);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Framework Methods
@@ -5214,6 +5378,8 @@ public class FiscalPrinter
       service18 = null;
       service19 = null;
       service110 = null;
+      service111 = null;
+      service112 = null;
     }
     else
     {
@@ -5327,6 +5493,34 @@ public class FiscalPrinter
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement FiscalPrinterService110 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion111)
+      {
+        try
+        {
+          service111 = (FiscalPrinterService111)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement FiscalPrinterService111 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion112)
+      {
+        try
+        {
+          service112 = (FiscalPrinterService112)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement FiscalPrinterService112 interface",
                                   e);
         }
       }

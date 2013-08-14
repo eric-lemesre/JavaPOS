@@ -49,6 +49,10 @@ public class MSRBeanInfo
         makeProperty("CapCompareFirmwareVersion"),
         makeProperty("CapUpdateFirmware"),
         makeProperty("CapWritableTracks"),
+        makeProperty("CapCardAuthentication"),
+        makeProperty("CapDataEncryption"),
+        makeProperty("CapDeviceAuthentication"),
+        makeProperty("CapTrackDataMasking"),
 
         // Properties
         makeProperty("AccountNumber"),
@@ -77,6 +81,24 @@ public class MSRBeanInfo
         makeProperty("TransmitSentinels"),
         makeProperty("EncodingMaxLength"),
         makeProperty("TracksToWrite"),
+        makeProperty("AdditionalSecurityInformation"),
+        makeProperty("CardAuthenticationData"),
+        makeProperty("CardAuthenticationDataLength"),
+        makeProperty("CardPropertyList"),
+        makeProperty("CardType"),
+        makeProperty("CardTypeList"),
+        makeProperty("DataEncryptionAlgorithm"),
+        makeProperty("DeviceAuthenticated"),
+        makeProperty("DeviceAuthenticationProtocol"),
+        makeProperty("Track1EncryptedData"),
+        makeProperty("Track1EncryptedDataLength"),
+        makeProperty("Track2EncryptedData"),
+        makeProperty("Track2EncryptedDataLength"),
+        makeProperty("Track3EncryptedData"),
+        makeProperty("Track3EncryptedDataLength"),
+        makeProperty("Track4EncryptedData"),
+        makeProperty("Track4EncryptedDataLength"),
+        makeProperty("WriteCardType"),
 
       };
 

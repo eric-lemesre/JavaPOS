@@ -53,6 +53,8 @@ public class CashChangerBeanInfo
         makeProperty("CapUpdateStatistics"),
         makeProperty("CapCompareFirmwareVersion"),
         makeProperty("CapUpdateFirmware"),
+        makeProperty("CapJamSensor"),
+        makeProperty("CapRealTimeData"),
 
         // Properties
         makeProperty("AsyncMode"),
@@ -74,7 +76,11 @@ public class CashChangerBeanInfo
         makeProperty("DepositCashList"),
         makeProperty("DepositCodeList"),
         makeProperty("DepositCounts"),
-        makeProperty("DepositStatus")
+        makeProperty("DepositStatus"),
+        makeProperty("CurrentService"),
+        makeProperty("RealTimeDataEnabled"),
+        makeProperty("ServiceCount"),
+        makeProperty("ServiceIndex")
       };
 
       return properties;

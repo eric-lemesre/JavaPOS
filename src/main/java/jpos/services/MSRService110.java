@@ -18,6 +18,10 @@
 // Modification history
 // ------------------------------------------------------------------
 // 2006-Feb-10 JavaPOS Release 1.10                                BS
+// 2006-Oct-23 JavaPOS 1.10.2 Update                               BS
+//   Fixed type of writeTracks data parameter to be byte[][] as
+//   UnifiedPOS has corrected the type from "string" to
+//   "array of binary".
 //
 /////////////////////////////////////////////////////////////////////
 
@@ -43,6 +47,6 @@ public interface MSRService110
   // Methods
   public void    clearInputProperties()
                      throws JposException;
-  public void    writeTracks(String data, int timeout)
+  public void    writeTracks(byte[][] data, int timeout)
                      throws JposException;
 }
