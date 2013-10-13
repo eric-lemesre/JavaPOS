@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>jpos</groupId>
+	<groupId>com.jpos</groupId>
 	<artifactId>jpos</artifactId>
-	<version>1.12.2</version>
+	<version>1.12.2-1</version>
 	<name>JavaPOS</name>
 	<description>The JavaPOS (Java for Point Of Sale) standard committee was formed by a
 collection of retail vendors and end users to examine the ways in which these
@@ -57,7 +57,7 @@ Credit Authorization Terminal (CAT) interface requested by Japanese retailers.</
 					</configuration>
 					<executions>
 						<execution>
-							<id>attach-sources</id>
+							<id>default-package</id>
 							<goals>
 								<goal>jar-no-fork</goal>
 							</goals>
@@ -74,7 +74,7 @@ Credit Authorization Terminal (CAT) interface requested by Japanese retailers.</
 					</configuration>
 					<executions>
 						<execution>
-							<id>attach-javadocs</id>
+							<id>default-package</id>
 							<goals>
 								<goal>jar-no-fork</goal>
 							</goals>
