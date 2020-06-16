@@ -2,3 +2,8 @@
 *~
 target/
 dist/
+.idea/
+.settings/
+.classpath
+.project
+jpos.iml

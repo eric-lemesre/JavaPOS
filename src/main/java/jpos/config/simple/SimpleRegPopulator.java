@@ -257,7 +257,7 @@ public class SimpleRegPopulator extends AbstractRegPopulator
             }
         }
 
-        zos.flush();
+        zos.finish();;
         zos.close();
     }
 
